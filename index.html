@@ -9,78 +9,96 @@
   <title>Smart City Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
   <!-- ─── Header ─── -->
-  <header class="header">
+  <header class="header slide-in-top">
     <div class="header__inner">
       <div class="header__brand">
         <span class="header__icon">🏙️</span>
         <h1 class="header__title">Smart City Dashboard</h1>
       </div>
-      <p class="header__tagline">Real‑time citizen information at your fingertips</p>
+      <div class="header__divider"></div>
+      <p class="header__tagline">AI Powered Citizen Dashboard</p>
     </div>
   </header>
 
   <!-- ─── Dashboard Grid ─── -->
-  <main class="dashboard">
+  <main class="dashboard masonry-grid fade-in-up">
 
     <!-- CARD 1 — Weather -->
-    <section class="card card--weather" id="card-weather">
+    <section class="card card--glass card--weather" id="card-weather">
       <div class="card__header">
-        <span class="card__icon">🌤️</span>
-        <h2 class="card__title">Weather</h2>
-        <button class="card__refresh" onclick="refreshWeather()" title="Refresh weather">⟳</button>
+        <div class="card__title-group">
+          <span class="card__icon weather-color">🌤️</span>
+          <h2 class="card__title">Weather</h2>
+        </div>
+        <button class="card__refresh icon-btn weather-glow" onclick="refreshWeather()" title="Refresh weather">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21v-5h5"/></svg>
+        </button>
       </div>
       <div class="card__body" id="weather-body">
         <div class="loader" id="weather-loader">
-          <div class="spinner"></div><span>Fetching weather…</span>
+          <div class="spinner weather-border"></div><span>Fetching weather…</span>
         </div>
       </div>
     </section>
 
     <!-- CARD 2 — Currency -->
-    <section class="card card--currency" id="card-currency">
+    <section class="card card--glass card--currency" id="card-currency">
       <div class="card__header">
-        <span class="card__icon">💱</span>
-        <h2 class="card__title">Currency Rates</h2>
-        <button class="card__refresh" onclick="refreshCurrency()" title="Refresh currency">⟳</button>
+        <div class="card__title-group">
+          <span class="card__icon currency-color">💱</span>
+          <h2 class="card__title">Currency Rates</h2>
+        </div>
+        <button class="card__refresh icon-btn currency-glow" onclick="refreshCurrency()" title="Refresh currency">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21v-5h5"/></svg>
+        </button>
       </div>
       <div class="card__body" id="currency-body">
         <div class="loader" id="currency-loader">
-          <div class="spinner"></div><span>Fetching rates…</span>
+          <div class="spinner currency-border"></div><span>Fetching rates…</span>
         </div>
       </div>
     </section>
 
     <!-- CARD 3 — Citizen Profile -->
-    <section class="card card--citizen" id="card-citizen">
+    <section class="card card--glass card--citizen" id="card-citizen">
       <div class="card__header">
-        <span class="card__icon">👤</span>
-        <h2 class="card__title">Citizen Profile</h2>
-        <button class="card__refresh" onclick="refreshCitizen()" title="Refresh citizen">⟳</button>
+        <div class="card__title-group">
+          <span class="card__icon citizen-color">👤</span>
+          <h2 class="card__title">Citizen Profile</h2>
+        </div>
+        <button class="card__refresh icon-btn citizen-glow" onclick="refreshCitizen()" title="Refresh citizen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21v-5h5"/></svg>
+        </button>
       </div>
       <div class="card__body" id="citizen-body">
         <div class="loader" id="citizen-loader">
-          <div class="spinner"></div><span>Loading profile…</span>
+          <div class="spinner citizen-border"></div><span>Loading profile…</span>
         </div>
       </div>
     </section>
 
     <!-- CARD 4 — City Fact -->
-    <section class="card card--fact" id="card-fact">
+    <section class="card card--glass card--fact" id="card-fact">
       <div class="card__header">
-        <span class="card__icon">💡</span>
-        <h2 class="card__title">City Fact of the Day</h2>
-        <button class="card__refresh" onclick="refreshFact()" title="Refresh fact">⟳</button>
+        <div class="card__title-group">
+          <span class="card__icon fact-color">💡</span>
+          <h2 class="card__title">City Fact</h2>
+        </div>
+        <button class="card__refresh icon-btn fact-glow" onclick="refreshFact()" title="Refresh fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 21v-5h5"/></svg>
+        </button>
       </div>
       <div class="card__body" id="fact-body">
         <div class="loader" id="fact-loader">
-          <div class="spinner"></div><span>Finding a fact…</span>
+          <div class="spinner fact-border"></div><span>Finding a fact…</span>
         </div>
       </div>
     </section>
@@ -88,19 +106,24 @@
   </main>
 
   <!-- ─── Footer ─── -->
-  <footer class="footer">
+  <footer class="footer fade-in-up delay-2">
     <p>© 2026 Smart City Dashboard &middot; Powered by Open APIs</p>
   </footer>
 
   <!-- ─── Chatbot ─── -->
-  <button class="chatbot-fab" id="chatbot-fab" onclick="toggleChat()" title="Open AI Assistant">
+  <button class="chatbot-fab neon-pulse" id="chatbot-fab" onclick="toggleChat()" title="Open AI Assistant">
     <span class="chatbot-fab__icon" id="fab-icon">💬</span>
   </button>
 
-  <div class="chat-window" id="chat-window">
+  <div class="chat-window glass-panel" id="chat-window">
     <div class="chat__header">
-      <span>🤖 City AI Assistant</span>
-      <button class="chat__close" onclick="toggleChat()">✕</button>
+      <div class="chat__header-title">
+        <span class="ai-status-dot"></span>
+        <span>City AI Assistant</span>
+      </div>
+      <button class="chat__close" onclick="toggleChat()">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
     </div>
     <div class="chat__messages" id="chat-messages">
       <div class="chat-bubble chat-bubble--bot">
@@ -111,9 +134,12 @@
     <div class="chat__input-area">
       <input type="text" id="chat-input" placeholder="Ask about weather, currency…" autocomplete="off"
         onkeydown="if(event.key==='Enter')sendMessage()" />
-      <button class="chat__send" id="chat-send" onclick="sendMessage()">➤</button>
+      <button class="chat__send neon-btn" id="chat-send" onclick="sendMessage()">
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
     </div>
   </div>
+
   <!-- This file is dynamically generated by Vercel during build -->
   <script src="env.js"></script>
   <script src="script.js"></script>

@@ -3,7 +3,7 @@
    ═══════════════════════════════════════════════════════ */
 
 // ─── HuggingFace Token (read from environment variable during deployment) ───
-const HF_TOKEN = process.env.HF_TOKEN || "";
+const HF_TOKEN = (typeof process !== "undefined" && process.env) ? (process.env.HF_TOKEN || "") : "";
 
 // ─── Global Data Stores ───
 let weatherData = {};
