@@ -109,28 +109,29 @@ async function fetchCitizen() {
   body.innerHTML = `<div class="loader"><div class="spinner"></div><span>Loading profile…</span></div>`;
 
   try {
-    // Generate random ID because DummyJSON doesn't support /users/random directly
-    const randomId = Math.floor(Math.random() * 100) + 1;
-    const res = await fetch(`https://dummyjson.com/users/${randomId}`);
+    const res = await fetch("https://randomuser.me/api/");
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
+    const json = await res.json();
+    const user = json.results[0];
 
-    const fullName = data.firstName + " " + data.lastName;
+    const fullName = user.name.first + " " + user.name.last;
 
     // Update global store
     citizenData = {
       name: fullName,
-      email: data.email,
-      city: data.address.city,
-      image: data.image,
+      email: user.email,
+      city: user.location.city,
+      image: user.picture.large,
     };
 
     body.innerHTML = `
-      <div class="citizen-card">
-        <img class="citizen-card__avatar" src="${citizenData.image}" alt="${fullName}" />
-        <span class="citizen-card__name">${fullName}</span>
-        <span class="citizen-card__info">📍 ${citizenData.city}</span>
-        <span class="citizen-card__info">✉️ ${citizenData.email}</span>
+      <div class="profile-info">
+        <img class="profile-img" src="${citizenData.image}" alt="${fullName}" />
+        <div class="profile-details">
+          <span class="profile-name">${fullName}</span>
+          <span class="profile-location">📍 ${citizenData.city}</span>
+          <span class="profile-email">✉️ ${citizenData.email}</span>
+        </div>
       </div>
     `;
   } catch (err) {
