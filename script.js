@@ -74,25 +74,25 @@ async function fetchCurrency() {
 
     // Rates are USD-based → derive INR cross-rates
     const inrPerUsd = data.rates.INR;
-    const inrToUsd = (1 / inrPerUsd).toFixed(4);
-    const inrToEur = (1 / inrPerUsd * data.rates.EUR).toFixed(4);
-    const inrToGbp = (1 / inrPerUsd * data.rates.GBP).toFixed(4);
+    const usdToInr = inrPerUsd.toFixed(2);
+    const eurToInr = (inrPerUsd / data.rates.EUR).toFixed(2);
+    const gbpToInr = (inrPerUsd / data.rates.GBP).toFixed(2);
 
     // Update global store
-    currencyData = { usd: inrToUsd, eur: inrToEur, gbp: inrToGbp };
+    currencyData = { usd: usdToInr, eur: eurToInr, gbp: gbpToInr };
 
     body.innerHTML = `
       <div class="data-row">
-        <span class="data-label">1 INR → USD</span>
-        <span class="data-value">$${inrToUsd}</span>
+        <span class="data-label">1 USD → INR</span>
+        <span class="data-value">₹${usdToInr}</span>
       </div>
       <div class="data-row">
-        <span class="data-label">1 INR → EUR</span>
-        <span class="data-value">€${inrToEur}</span>
+        <span class="data-label">1 EUR → INR</span>
+        <span class="data-value">₹${eurToInr}</span>
       </div>
       <div class="data-row">
-        <span class="data-label">1 INR → GBP</span>
-        <span class="data-value">£${inrToGbp}</span>
+        <span class="data-label">1 GBP → INR</span>
+        <span class="data-value">₹${gbpToInr}</span>
       </div>
     `;
   } catch (err) {
@@ -236,9 +236,9 @@ Wind ${weatherData.windspeed}
 Condition ${weatherData.condition}
 
 CURRENCY:
-1 INR = ${currencyData.usd} USD
-1 INR = ${currencyData.eur} EUR
-1 INR = ${currencyData.gbp} GBP
+1 USD = ₹${currencyData.usd}
+1 EUR = ₹${currencyData.eur}
+1 GBP = ₹${currencyData.gbp}
 
 CITIZEN:
 ${citizenData.name}
